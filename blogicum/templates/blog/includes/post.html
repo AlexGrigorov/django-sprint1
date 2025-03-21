@@ -12,7 +12,7 @@
   </ul>          
   {% if crop_text %}
     <p>
-    {{ post.text|truncatewords:10 }}
+      <pre> {{ post.text|truncatewords:10 }} </pre>
     </p>
     <a href="{% url 'blog:post_detail' post.id %}">Читать полный текст</a>
   {% else %}        
