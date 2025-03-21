@@ -153,4 +153,4 @@ build_tests/
 yap_testing
 html/img/img/
 
-/static_dev/
+.static_dev/
