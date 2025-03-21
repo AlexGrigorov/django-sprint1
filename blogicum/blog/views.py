@@ -1,5 +1,5 @@
-from django.shortcuts import render
 from django.http import Http404
+from django.shortcuts import render
 
 posts = [
     {
@@ -31,8 +31,7 @@ posts = [
                 гиблого места.''',
     },
     {
-        
-        'id': 2,
+        'id': 200,
         'location': 'Остров отчаянья',
         'date': '25 октября 1659 года',
         'category': 'not-my-day',
