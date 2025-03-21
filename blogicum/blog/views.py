@@ -52,7 +52,6 @@ def index(request):
 
 
 def post_detail(request, post_id):
-    """Отображение полного описания выбранной записи"""
     post = [post for post in posts if post['id'] == post_id]
     if not post:
         raise Http404('Вы указали неверный id')
