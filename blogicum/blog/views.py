@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import Http404
 
 posts = [
     {
@@ -30,6 +31,7 @@ posts = [
                 гиблого места.''',
     },
     {
+        
         'id': 2,
         'location': 'Остров отчаянья',
         'date': '25 октября 1659 года',
@@ -50,9 +52,13 @@ def index(request):
     return render(request, template, context)
 
 
-def post_detail(request, id):
+def post_detail(request, post_id):
+    """Отображение полного описания выбранной записи"""
+    post = [post for post in posts if post['id'] == post_id]
+    if not post:
+        raise Http404('Вы указали неверный id')
+    context = {'post': post[0]}
     template = 'blog/detail.html'
-    context = {'post': posts[id]}
     return render(request, template, context)
 
 
