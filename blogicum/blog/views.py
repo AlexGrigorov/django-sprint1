@@ -46,21 +46,17 @@ posts = [
 
 
 def index(request):
-    context = {'posts': posts}
-    template = 'blog/index.html'
-    return render(request, template, context)
+    return render(request, 'blog/index.html', {'posts': posts})
+
+
+post_id_list = [post['id'] for post in posts]
 
 
 def post_detail(request, post_id):
-    post = [post for post in posts if post['id'] == post_id]
-    if not post:
-        raise Http404('Вы указали неверный id')
-    context = {'post': post[0]}
-    template = 'blog/detail.html'
-    return render(request, template, context)
+    if post_id not in post_id_list:
+        raise Http404('Page not found (error 404). Пост не найден')
+    return render(request, 'blog/detail.html', {'post': posts[post_id]})
 
 
 def category_posts(request, category_slug):
-    context = {'category': category_slug}
-    template = 'blog/category.html'
-    return render(request, template, context)
+    return render(request, 'blog/category.html', {'category': category_slug})
