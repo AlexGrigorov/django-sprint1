@@ -1,6 +1,3 @@
-from django.http import Http404
-from django.shortcuts import render
-
 posts = [
     {
         'id': 0,
@@ -31,7 +28,7 @@ posts = [
                 гиблого места.''',
     },
     {
-        'id': 2,
+        'id': 20,
         'location': 'Остров отчаянья',
         'date': '25 октября 1659 года',
         'category': 'not-my-day',
@@ -44,19 +41,10 @@ posts = [
     },
 ]
 
-
-def index(request):
-    return render(request, 'blog/index.html', {'posts': posts})
-
-
 post_id_list = {post['id']: post for post in posts}
+print(post_id_list.get(20))
+#dict1_triple_cond = {list(post_id_list): posts}
+#post_id_list[post_id]
+#print(dict1_triple_cond)
 
-
-def post_detail(request, post_id):
-    if post_id not in post_id_list:
-        raise Http404('Page not found (error 404). Пост не найден')
-    return render(request, 'blog/detail.html', {'post': post_id_list[post_id]})
-
-
-def category_posts(request, category_slug):
-    return render(request, 'blog/category.html', {'category': category_slug})
+#print(posts[1])
